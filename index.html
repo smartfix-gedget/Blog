@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smartfix</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Smart<span>Fix</span></a>
+        <div class="menuToggle" onclick="toggleMenu();"></div>
+        <ul class="navigation">
+            <li><a href="#banner" onclick="toggleMenu();">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu();">About</a></li>
+            <li><a href="#blog" onclick="toggleMenu();">Blog</a></li>
+            <li><a href="#testimonials" onclick="toggleMenu();">Testimonials</a></li>
+            <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+           
+        </ul>
+    </header>
+    <section class="testimonials" id="testimonials">
+      <div class="content">
+          <div class="box">
+              <div class="imgBx">
+                  <img src="https://m.media-amazon.com/images/I/81NvqrYWevL._SL1500_.jpg" alt="">
+              </div>
+              <div class="text">
+                <div class="product-link">
+
+                  <p>CPU Under 25K</p>
+
+                  <h1> <a href="https://youtube.com"> Moother Board</a> </h1>
+                  <h1> <a href="https://youtube.com"> Processor 15 10th</a> </h1>
+                  <h1> <a href="https://youtube.com"> SSD m.2 pcie 4.0</a> </h1>
+                  <h1> <a href="https://youtube.com"> Hdd 1TB Seagate</a> </h1>
+                  <h1> <a href="https://youtube.com"> Power Supply</a> </h1>
+                  <h1> <a href="https://youtube.com"> CPU Cabinate</a> </h1>
+
+                  
+  
+                </div>
+            </div>
+                  
+
+          </div>
+          <div class="box">
+              <div class="imgBx">
+                  <img src="images/testi2.jpg" alt="">
+              </div>
+
+                <div class="product-link">
+
+                  <p>CPU Under 25K</p>
+
+                  <h1> <a href="https://youtube.com"> Moother Board</a> </h1>
+                  <h1> <a href="https://youtube.com"> Processor 15 10th</a> </h1>
+                  <h1> <a href="https://youtube.com"> SSD m.2 pcie 4.0</a> </h1>
+                  <h1> <a href="https://youtube.com"> Hdd 1TB Seagate</a> </h1>
+                  <h1> <a href="https://youtube.com"> Power Supply</a> </h1>
+                  <h1> <a href="https://youtube.com"> CPU Cabinate</a> </h1>
+
+                  
+                </div>
+          </div>
+          <div class="box">
+              <div class="imgBx">
+                  <img src="images/testi3.jpg" alt="">
+              </div>
+              <div class="text">
+                <div class="product-link">
+
+                  <p>CPU Under 25K</p>
+
+                  <h1> <a href="https://youtube.com"> Moother Board</a> </h1>
+                  <h1> <a href="https://youtube.com"> Processor 15 10th</a> </h1>
+                  <h1> <a href="https://youtube.com"> SSD m.2 pcie 4.0</a> </h1>
+                  <h1> <a href="https://youtube.com"> Hdd 1TB Seagate</a> </h1>
+                  <h1> <a href="https://youtube.com"> Power Supply</a> </h1>
+                  <h1> <a href="https://youtube.com"> CPU Cabinate</a> </h1>
+
+                  
+                </div>
+      </div>
+      </div>
+      </div>
+
+  </section>
+
+
+          <div class="copyrightText">
+            <p>Copyright 2021</p>
+        </div>
+
+       <!-- Include EmailJS SDK -->
+       <script type="text/javascript"
+       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  (function(){
+     emailjs.init({
+       publicKey: "z9kNxh3bAJwJVMOck",
+     });
+  })();
+
+</script>
+
+      <!-- ###### Touggle Menu Starts ######  -->
+
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            const header = document.querySelector('header');
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+
+
+        function toggleMenu(){
+            const menuToggle = document.querySelector('.menuToggle');
+            const navigation = document.querySelector('.navigation');
+            menuToggle.classList.toggle('active');
+            navigation.classList.toggle('active');
+        }
+
+
+        // ######### Touggle Menu Ends ###############
+
+
+      //  ####### Contact menu lable Focus function start ###### 
+        const inputs = document.querySelectorAll(".input");
+
+function focusFunc() {
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc() {
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});
+
+//  ####### Contact menu lable Focus function ends ###### 
+
+// Form submission handling
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  let name = document.getElementById('name').value.trim();
+  let adderess = document.getElementById('adderess').value.trim();
+  let phone = document.getElementById('phone').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let gname = document.getElementById('gname').value.trim();
+  let message = document.getElementById('message').value.trim();
+
+  if (!name || !adderess || !phone || !email || !gname || !message) {
+      alert('Please fill in all fields.');
+      return;
+  }
+
+  if (!validateEmail(email)) {
+      alert('Please enter a valid email address.');
+      return;
+  }
+
+  // If validation passes, proceed with form submission
+  submitForm(name, adderess, phone, email, gname, message);
+});
+
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+}
+
+function submitForm(name, adderess, phone, email, gname, message) {
+  // Integrate EmailJS here
+  // Implementation will be shown in the next section
+  console.log('Form submitted:', { name, adderess, phone, email, gname, message });
+
+  emailjs.send('service_4ab5suh', 'template_thdefsp', {
+      name: name,
+      adderess: adderess,
+      phone: phone,
+      email: email,
+      gname: gname,
+      message: message
+  })
+  .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      document.getElementById('contactForm').reset();
+      alert('Thank You For Reaching Us! We Will Contact You Very Soon! Thank You!');
+  }, function(error) {
+      console.log('FAILED...', error);
+      alert('Failed to submit the form. Please try again.');
+  });
+}
+
+    </script>
+
+</body>
+</html>
